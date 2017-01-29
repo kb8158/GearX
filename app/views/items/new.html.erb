@@ -1,0 +1,24 @@
+<h1 class= "text-center">Add Gear Form</h1>
+
+  <%= form_for(@item) do |f| %>
+
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name %>
+      <%= f.label :image, "Image" %>
+      <%= f.text_field :image %>
+    </div>
+  </div>
+    <div class="large-12 columns">
+      <div class="field">
+         <%= f.label :body %>
+         <%= f.text_field :body %>
+       </div>
+     </div>
+
+   <div class="actions">
+      <%= f.submit "Add Item"%>
+   </div>
+<% end %>
+<p><%= link_to "Back To Items", items_path %></p>
