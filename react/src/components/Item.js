@@ -14,4 +14,4 @@ const Item = (props) => {
 
 }
 
-export default Image;
+export default Item;

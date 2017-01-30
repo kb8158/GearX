@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129203643) do
+ActiveRecord::Schema.define(version: 20170130185331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "elements", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.text     "body",       null: false
+    t.date     "date",       null: false
+    t.integer  "days",       null: false
+    t.string   "size",       null: false
+    t.string   "zip_code",   null: false
+    t.string   "image"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_elements_on_user_id", using: :btree
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.boolean "selected"
+    t.index ["item_id"], name: "index_exchanges_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_exchanges_on_user_id", using: :btree
+  end
 
   create_table "items", force: :cascade do |t|
     t.string  "name",    null: false

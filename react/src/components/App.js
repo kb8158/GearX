@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Shoe from "./Item";
+import Item from "./Item";
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   fetching () {
-    fetch('/api/v1/items.json')
+    fetch('/api/v1/items')
       .then(response => {
         if (response.ok) {
           return response;
@@ -28,16 +28,17 @@ class App extends Component {
   componentDidMount() {
     this.fetching();
     setInterval(
-      this.fetching, 10000);
+      this.fetching, 100000);
   }
+
   render(){
 
     let items;
     if (this.state.itemData) {
-      shoes = this.state.itemData.map(item => {
+      items = this.state.itemData.map(item => {
         return(
           <div>
-            <Shoe
+            <Item
               key={item.id}
               id={item.id}
               name={item.name}
@@ -51,7 +52,6 @@ class App extends Component {
 
     return (
       <div>
-      <h3 id="new-item-react"><a href={'/items/new'}>Add New Item</a></h3>
         {items}
       </div>
     )
