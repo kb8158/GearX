@@ -12,7 +12,7 @@
 </div>
 
 <% if @item.user == current_user %>
-  <p id="links_color"><%= link_to "Update Iten Information", edit_item_path %></p>
+  <p id="links_color"><%= link_to "Update Item Information", edit_item_path %></p>
 <% end %>
 
 <% if @item.user == current_user%>
@@ -20,6 +20,11 @@
     <p><%= link_to "Delete Item", @item, method: :delete %></p>
   </div>
 <% end %>
+
+<div class="links">
+  <%= link_to "Select This Item", @exchange, method: :create %>
+</div>
+
 <div class="links">
   <p><%= link_to "Back To Items", root_path %></p>
 </div>
