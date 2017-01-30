@@ -1,13 +1,13 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App';
 
 $(function() {
+  if (document.getElementById('app')) {
   ReactDOM.render(
-    <h1>Hi</h1>,
+    <App />,
     document.getElementById('app')
-  );
+    );
+  }
 });
-
-var slideIndex = 0;
-carousel();

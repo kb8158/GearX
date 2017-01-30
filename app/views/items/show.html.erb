@@ -7,6 +7,19 @@
       </div>
     <div class="col-md-8">
       <h3> Description: <%= @item.body %> </h3>
-    </h3>
-  </h3>
-</h3>      
+    </div>
+  </div>
+</div>
+
+<% if @item.user == current_user %>
+  <p id="links_color"><%= link_to "Update Iten Information", edit_item_path %></p>
+<% end %>
+
+<% if @item.user == current_user%>
+  <div class="links">
+    <p><%= link_to "Delete Item", @item, method: :delete %></p>
+  </div>
+<% end %>
+<div class="links">
+  <p><%= link_to "Back To Items", root_path %></p>
+</div>
