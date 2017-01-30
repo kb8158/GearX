@@ -8,3 +8,6 @@ $(function() {
     document.getElementById('app')
   );
 });
+
+var slideIndex = 0;
+carousel();

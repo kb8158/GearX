@@ -1,11 +1,15 @@
 <h2 class="text-center"><%=link_to "<button>Add New Item</button>".html_safe, new_item_path %></h2>
 
+
 <% @items.each do |item| %>
-    <div>
-      <p><%= link_to item.name, item_path(item)%> </p>
-      <%= image_tag(item.image) %>
-    </div>
-  <% end %>
-
-
-<%=link_to "<button>Add an Item </button>".html_safe, new_item_path %>
+  <div class="container">
+      <div class="row">
+        <div class="col-md-4 box title">
+          <p><%= link_to item.name, item_path(item)%> </p>
+          <div class="product-img">
+            <%= image_tag(item.image, class: "img-responsive") %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
