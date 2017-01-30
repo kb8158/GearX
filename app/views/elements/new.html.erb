@@ -1,0 +1,33 @@
+<h1 class= "text-center">Add Gear to the Wish List</h1>
+
+  <%= form_for(@element) do |f| %>
+
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name %>
+
+      <%= f.label :date, "Date Needed" %>
+      <%= f.text_field :date %>
+      <%= f.label :days, "Duration of use planned" %>
+      <%= f.text_field :days %>
+    </div>
+  </div>
+    <div class="large-12 columns">
+      <div class="field">
+         <%= f.label :body, "Description" %>
+         <%= f.text_field :body %>
+         <%= f.label :size, "Size" %>
+         <%= f.text_field :size%>
+         <%= f.label :zip_code, "Zip Code of item" %>
+         <%= f.text_field :zip_code %>
+         <%= f.label :image, "Image" %>
+         <%= f.text_field :image %>
+       </div>
+     </div>
+
+   <div class="actions">
+      <%= f.submit "Add Item"%>
+   </div>
+<% end %>
+<p><%= link_to "Back To Items", elements_path %></p>
