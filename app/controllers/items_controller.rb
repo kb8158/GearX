@@ -57,6 +57,6 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name, :image, :body)
+    params.require(:item).permit(:name, :image, :body, :size, :zip_code)
   end
 end

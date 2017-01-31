@@ -6,8 +6,6 @@
 
 .button{
   padding: 200px;
-  height: 250px;
-  width: 400px;
 }
 
 body{
@@ -23,7 +21,7 @@ body{
   margin: 20px;
 }
 
-.img-responsive{
+.product img{
   max-width: 300px;
   max-height: 300px;
   margin: auto;
@@ -32,7 +30,13 @@ body{
   border-color: black;
 }
 
-.title{
-  font-size: 20pt;
+.row{
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
+.links{
+  margin-top: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
 }

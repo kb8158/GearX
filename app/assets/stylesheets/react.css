@@ -1,0 +1,15 @@
+#app {
+  max-width: 325px;
+  max-height: 350px;
+  /*box-shadow: 0px 10px 5px rgba(0,0,0,0.2);*/
+}
+
+#app img{
+  max-width: 300px;
+  max-height: 300px;
+  margin: auto;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+  text-align: center;
+}

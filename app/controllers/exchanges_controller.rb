@@ -33,7 +33,7 @@ class ExchangesController < ApplicationController
   end
 
   def exchange_params
-    params.require(:exchange).permit(:user_id, :item_id, :selected)
+    params.require(:exchange).permit(:user_id, :item_id, :element_id, :selected)
   end
 
 end

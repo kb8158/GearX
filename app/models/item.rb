@@ -6,6 +6,6 @@ class Item < ApplicationRecord
   validates :body, presence: true
   validates :zip_code, presence: true
   validates :zip_code, numericality: true
-  validates :zip_code, length: {is: 5}
+  validates :zip_code, length: { is: 5 }
   validates :size, presence: true
 end

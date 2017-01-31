@@ -2,29 +2,26 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 box1">
+      <div class="product">
         <%= image_tag(@item.image) %>
       </div>
+    </div>
     <div class="col-md-8">
-      <h3> Description: <%= @item.body %> </h3>
+      <h3> Item: <%= @item.name %> </h3>
+      <p> Description: <%= @item.body %> </p>
+      <p> Location: <%= @item.zip_code %></p>
+      <p> Size: <%= @item.size %></p>
     </div>
   </div>
 </div>
-
+<div class="links">
 <% if @item.user == current_user %>
-  <p id="links_color"><%= link_to "Update Item Information", edit_item_path %></p>
+  <p id="links_color"><%= link_to "Update Item Information", edit_item_path %><br>
 <% end %>
-
 <% if @item.user == current_user%>
-  <div class="links">
-    <p><%= link_to "Delete Item", @item, method: :delete %></p>
-  </div>
+  <%= link_to "Delete Item", @item, method: :delete %><br>
 <% end %>
-
-<div class="links">
-  <%= link_to "Select This Item", @exchange, method: :create %>
-</div>
-
-<div class="links">
-  <p><%= link_to "Back To Items", root_path %></p>
+  <%= link_to "Select This Item", @exchange, method: :create %><br>
+  <%= link_to "Back To Items", root_path %><br>
 </div>
