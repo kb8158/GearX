@@ -15,13 +15,23 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
+
+<% if @item.lender == current_user %>
+  <p id="links_color"><%= link_to "Update Item Information", edit_item_path %></p>
+<% end %>
+
+<% if @item.lender == current_user%>
+  <div class="links">
+    <p><%= link_to "Delete Item", @item, method: :delete %></p>
+  </div>
+<% end %>
+<!-- POST	/item/:id/selected(.:format) -->
 <div class="links">
-<% if @item.user == current_user %>
-  <p id="links_color"><%= link_to "Update Item Information", edit_item_path %><br>
-<% end %>
-<% if @item.user == current_user%>
-  <%= link_to "Delete Item", @item, method: :delete %><br>
-<% end %>
-  <%= link_to "Select This Item", @exchange, method: :create %><br>
-  <%= link_to "Back To Items", root_path %><br>
+  <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post %>
+</div>
+
+<div class="links">
+  <p><%= link_to "Back To Items", root_path %></p>
+
 </div>
