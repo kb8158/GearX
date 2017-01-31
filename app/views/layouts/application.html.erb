@@ -6,7 +6,27 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
   </head>
+
+  <div class="navbar-header">
+    <div clas="navbar-text navbar-left">
+    <% if user_signed_in? %>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    </div>
+    <div clas="navbar-text navbar-right">
+      <%= link_to 'Change My User Info', edit_user_registration_path %>
+    </div>
+
+    <%else%>
+      <div clas="navbar-text navbar-left">
+        <li><%= link_to 'Sign In', new_user_session_path %>
+      </div>
+      <div clas="navbar-text navbar-right">
+        <li><%= link_to 'Sign Up', new_user_registration_path %>
+      <% end %>
+    </div>
+  </divv>
 
   <header class="banner" role="banner">
     <div class="w3-content w3-section">
@@ -15,24 +35,7 @@
   </header>
 
   <body>
-    <nav>
-      <div>
-      <% if user_signed_in? %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-      </div>
-      <div>
-        <%= link_to 'Change My User Info', edit_user_registration_path %>
-      </div>
 
-      <%else%>
-        <div>
-          <li><%= link_to 'Sign In', new_user_session_path %>
-        </div>
-        <div>
-          <li><%= link_to 'Sign Up', new_user_registration_path %>
-        <% end %>
-      </div>
-    </nav>
 
     <% if notice.is_a?(Array) %>
       <% notice.each do |this_notice| %>

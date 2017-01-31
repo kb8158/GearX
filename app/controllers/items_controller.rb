@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 # POST	/item/:id/selected(.:format)
   def selected
     @item = Item.find(params[:id])
-    
+
     @item.borrower = current_user
   end
 
@@ -64,6 +64,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+
     params.require(:item).permit(:name, :image, :body, :size, :zip_code, :lender_id)
+
   end
 end
