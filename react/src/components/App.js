@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   fetching () {
-    fetch('/api/v1/items')
+    fetch('/api/v1/bits')
       .then(response => {
         if (response.ok) {
           return response;

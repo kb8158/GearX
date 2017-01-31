@@ -1,8 +1,8 @@
-class Api::V1::ItemsController < ApplicationController
+class Api::V1::BitsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @items = Item.all
+    @bits = Bit.all
     render json: @items
   end
 end

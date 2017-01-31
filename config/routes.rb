@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :items, only: [:index]
+      resources :bits, only: [:index]
       resources :elements, only: [:index]
     end
   end
 
-  resources :items
+  resources :bits
   resources :elements
 
   resources :users, only: [:index, :destroy]

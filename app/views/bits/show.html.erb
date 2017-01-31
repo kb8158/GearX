@@ -1,0 +1,26 @@
+<h2 class="text-center"><%= @bit.name %> </h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 box1">
+      <div class="product">
+        <%= image_tag(@bit.image) %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <p> Description: <%= @item.body %> </p>
+      <p> Location: <%= @bit.zip_code %></p>
+      <p> Size: <%= @bit.size %></p>
+    </div>
+  </div>
+</div>
+<div class="links">
+<% if @item.user == current_user %>
+  <p id="links_color"><%= link_to "Update Item Information", edit_bit_path %><br>
+<% end %>
+<% if @item.user == current_user%>
+  <%= link_to "Delete Item", @bit, method: :delete %><br>
+<% end %>
+
+  <%= link_to "Back To Items", root_path %><br>
+</div>
