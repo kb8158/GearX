@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :items
+  post "/items/:id/selected", to: 'items#selected'
+
   resources :elements
 
   resources :users, only: [:index, :destroy]

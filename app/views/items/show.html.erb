@@ -11,18 +11,18 @@
   </div>
 </div>
 
-<% if @item.user == current_user %>
+<% if @item.lender == current_user %>
   <p id="links_color"><%= link_to "Update Item Information", edit_item_path %></p>
 <% end %>
 
-<% if @item.user == current_user%>
+<% if @item.lender == current_user%>
   <div class="links">
     <p><%= link_to "Delete Item", @item, method: :delete %></p>
   </div>
 <% end %>
-
+<!-- POST	/item/:id/selected(.:format) -->
 <div class="links">
-  <%= link_to "Select This Item", @exchange, method: :create %>
+  <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post %>
 </div>
 
 <div class="links">
