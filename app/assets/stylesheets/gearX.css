@@ -1,11 +1,11 @@
 .mySlides{
   height: 200px;
   opacity: .65;
-  /*width: 90%;*/
+  width: 100%;
 }
 
-.button{
-  padding: 200px;
+nav{
+  height: 20px;
 }
 
 body{

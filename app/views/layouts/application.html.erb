@@ -9,26 +9,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
   </head>
 
-  <div class="navbar-header">
-    <div clas="navbar-text navbar-left">
+  <nav>
+    <div class="navbar-text navbar-left">
     <% if user_signed_in? %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
     </div>
-    <div clas="navbar-text navbar-right">
+    <div class="navbar-text navbar-right">
       <%= link_to 'Change My User Info', edit_user_registration_path %>
     </div>
-
-    <%else%>
-      <div clas="navbar-text navbar-left">
-        <li><%= link_to 'Sign In', new_user_session_path %>
+    <div class="navbar-text navbar-left">
+      <%else%>
+        <%= link_to 'Sign In', new_user_session_path %>
       </div>
-      <div clas="navbar-text navbar-right">
-        <li><%= link_to 'Sign Up', new_user_registration_path %>
-      <% end %>
-    </div>
-  </divv>
+      <div class="navbar-text navbar-right">
+        <%= link_to 'Sign Up', new_user_registration_path %>
+      </div>
+    <% end %>
+  </nav>
 
-  <header class="banner" role="banner">
+  <header class="banner" role="banner" style="width:100%">
     <div class="w3-content w3-section">
       <img class="mySlides" src="http://digital-photography-school.com/wp-content/uploads/flickr/5171453436_2b2604aed5_o.jpg" style="width:100%">
     </div>

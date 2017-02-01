@@ -43,11 +43,11 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-# POST	/item/:id/selected(.:format)
+
   def selected
     @item = Item.find(params[:id])
-
     @item.borrower = current_user
+    @item.save
   end
 
   def destroy
@@ -64,8 +64,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-
-    params.require(:item).permit(:name, :image, :body, :size, :zip_code, :lender_id)
-
+    params.require(:item).permit(:name, :image, :body, :size, :zip_code, :lender_id, :borrower_id)
   end
 end
