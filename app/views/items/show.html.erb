@@ -15,7 +15,7 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
+
 
 <% if @item.lender == current_user %>
   <p id="links_color"><%= link_to "Update Item Information", edit_item_path %></p>
@@ -26,12 +26,12 @@
     <p><%= link_to "Delete Item", @item, method: :delete %></p>
   </div>
 <% end %>
-<!-- POST	/item/:id/selected(.:format) -->
+
 <div class="links">
   <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post %>
 </div>
 
 <div class="links">
-  <p><%= link_to "Back To Items", root_path %></p>
+  <p><%= link_to "Back To Items", items_path %></p>
 
 </div>
