@@ -1,0 +1,9 @@
+<h2><%= @user.first_name%></h2>
+
+
+
+<% @items.each do |item| %>
+<%= item.name%>
+<% end %>
+
+<p><%= link_to "Back To List of Explorers", users_path %></p>
