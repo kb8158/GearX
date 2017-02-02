@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import WishList from './components/WishList';
 
+
 $(function() {
   if (document.getElementById('app')) {
   ReactDOM.render(

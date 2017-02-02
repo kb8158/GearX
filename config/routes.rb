@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :elements
 
-  resources :users, only: [:index, :destroy]
+  resources :users, only: [:index, :show, :destroy]
 
   resources :homes, only: [:index]
 

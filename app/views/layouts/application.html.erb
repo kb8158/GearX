@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
   </head>
 
+  <header class="banner" role="banner" style="width:100%">
+    <div class="w3-content w3-section">
+      <img class="mySlides" src="http://digital-photography-school.com/wp-content/uploads/flickr/5171453436_2b2604aed5_o.jpg" style="width:100%">
+    </div>
+  </header>
+
   <nav>
     <div class="navbar-text navbar-left">
     <% if user_signed_in? %>
@@ -27,24 +33,18 @@
     <% end %>
   </nav>
 
-  <header class="banner" role="banner" style="width:100%">
-    <div class="w3-content w3-section">
-      <img class="mySlides" src="http://digital-photography-school.com/wp-content/uploads/flickr/5171453436_2b2604aed5_o.jpg" style="width:100%">
-    </div>
-  </header>
+
 
   <body>
-
-
     <% if notice.is_a?(Array) %>
       <% notice.each do |this_notice| %>
-        <p class="notice"><%= this_notice %></p>
+        <%= this_notice %>
       <% end %>
     <%elsif notice %>
-      <p class="notice"> <%= notice %></p>
+      <%= notice %>
     <% end %>
 
-    <p class="alert"><%= alert %></p>
+    <%= alert %>
 
     <script>
 
