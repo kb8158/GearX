@@ -48,6 +48,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.borrower = current_user
     @item.save
+    SelectedMailer.new_review(@review).deliver_later
   end
 
   def destroy

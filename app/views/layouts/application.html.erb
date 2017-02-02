@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
   </head>
 
   <header class="banner" role="banner" style="width:100%">
@@ -18,17 +19,17 @@
   <nav>
     <div class="navbar-text navbar-left">
     <% if user_signed_in? %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></button>
     </div>
     <div class="navbar-text navbar-right">
-      <%= link_to 'Change My User Info', edit_user_registration_path %>
+      <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Change My User Info', edit_user_registration_path %></button>
     </div>
     <div class="navbar-text navbar-left">
       <%else%>
-        <%= link_to 'Sign In', new_user_session_path %>
+        <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Sign In', new_user_session_path %></button>
       </div>
       <div class="navbar-text navbar-right">
-        <%= link_to 'Sign Up', new_user_registration_path %>
+        <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Sign Up', new_user_registration_path %></button>
       </div>
     <% end %>
   </nav>
