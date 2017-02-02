@@ -32,6 +32,9 @@ body{
   border-color: black;
 }
 
+.home{
+  margin-top: 50px;
+}
 .row{
   margin-left: 20px;
   margin-right: 20px;
@@ -63,4 +66,9 @@ body{
 
 .input-mysize{
   width: 1000px;
+}
+
+.page{
+  margin-left: 70px;
+  margin-right: 70px;
 }

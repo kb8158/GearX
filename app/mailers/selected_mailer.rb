@@ -5,7 +5,6 @@ class SelectedMailer < ApplicationMailer
     mail(
       to: item.lender.user.email,
       subject: "Your #{item.name} has been selected"
-      content: ""
     )
   end
 end

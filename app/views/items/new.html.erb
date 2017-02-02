@@ -6,14 +6,14 @@
     <div class="row">
       <div class="col-md-6 ">
         <div class="field">
-          <%= f.label :name, 'Name' %>
-          <%= f.text_field :name %>
-          <%= f.label :image, "Image" %>
-          <%= f.text_field :image %>
-          <%= f.label :size, "Size" %>
-          <%= f.text_field :size %>
-          <%= f.label :zip_code, "Location" %>
-          <%= f.text_field :zip_code %>
+          <%= f.label :name, 'Name' %><br>
+          <%= f.text_field :name %><br>
+          <%= f.label :image, "Image" %><br>
+          <%= f.text_field :image %><br>
+          <%= f.label :size, "Size" %><br>
+          <%= f.text_field :size %><br>
+          <%= f.label :zip_code, "Location" %><br>
+          <%= f.text_field :zip_code %><br>
         </div>
       </div>
     </div>
@@ -22,15 +22,17 @@
     <div class="row">
       <div class="col-md-12">
         <div class="field">
-          <%= f.label :body, "Description" %>
+          <%= f.label :body, "Description" %><br>
           <%= f.text_field :body %>
         </div>
       </div>
     </div>
   </div>
-
+<div class="page">
    <div class="actions">
       <%= f.submit "Add Item"%>
    </div>
 <% end %>
+
 <p><%= link_to "Back To Items", items_path %></p>
+</div>

@@ -12,7 +12,8 @@ feature 'sign up' , %Q{
 
   scenario 'specifying valid and required information (no profile picture upload)' do
     visit root_path
-    click_link 'Sign Up'
+    click_button 'Sign Up'
+    visit users_sign_up_path
     fill_in 'First Name', with: 'Kate'
     fill_in 'Last Name', with: 'Brown'
     fill_in 'Email', with: 'kb@gmail.com'
@@ -20,14 +21,14 @@ feature 'sign up' , %Q{
     fill_in 'Password Confirmation', with: 'password'
     click_button 'Sign Up'
     visit root_path
-    
+
     expect(page).to have_content("GearX")
     expect(page).to have_content('Sign Out')
   end
 
   scenario 'required information is not supplied' do
     visit root_path
-    click_link 'Sign Up'
+    click_button 'Sign Up'
     click_button 'Sign Up'
 
     expect(page).to have_content("can't be blank")
@@ -36,10 +37,10 @@ feature 'sign up' , %Q{
 
   scenario 'password confirmation does not match confirmation' do
     visit root_path
-    click_link 'Sign Up'
+    click_button 'Sign Up'
 
 
-    fill_in 'user_password', with: 'password'
+    fill_in 'Password', with: 'password'
     fill_in 'Password Confirmation', with: 'somethingDifferent'
 
     click_button 'Sign Up'

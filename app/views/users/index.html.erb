@@ -1,9 +1,12 @@
 <h2 class="text-center">Explorers</h2>
 
-<div>
-  <% @users.each do |user| %>
-    <p><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%></p>
-  <% end %>
+<div class="page">
+  <div>
+    <% @users.each do |user| %>
+      <h4><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%></h4>
+    <% end %>
+  </div>
+  <div class="home">
+    <p><%= link_to "Back To Home", root_path %></p>
+  </div>
 </div>
-
-<p><%= link_to "Back To Home", root_path %></p>
