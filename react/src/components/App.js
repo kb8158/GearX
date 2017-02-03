@@ -1,58 +1,28 @@
 import React, { Component } from 'react';
 import Item from "./Item";
+import SearchForm from './SearchForm';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemData: [],
+      query: "",
     };
-    this.fetching = this.fetching.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  fetching () {
-    fetch('/api/v1/items')
-      .then(response => {
-        if (response.ok) {
-          return response;
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let data = body;
-
-        this.setState({ itemData: data });
-      });
-  }
-
-  componentDidMount() {
-    this.fetching();
-    setInterval(
-      this.fetching, 100000);
+  handleSearch (query) {
+    this.setState({query});
   }
 
   render(){
-
-    let items;
-    if (this.state.itemData) {
-      items = this.state.itemData.map(item => {
-        return(
-          <div>
-            <Item
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              description={item.body}
-            />
-          </div>
-        )
-      })
-    }
-
     return (
       <div>
-        {items}
+      < SearchForm
+        handleSearch={this.handleSearch}
+      />
+      < Item
+        query={this.state.query}
       </div>
     )
   }
