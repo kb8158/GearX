@@ -26,10 +26,13 @@
     <p><%= link_to "Delete Item", @item, method: :delete %></p>
   </div>
 <% end %>
-
-<div class="links">
+<% if @item.lender != current_user && @item.borrower = nil %>
+  <div class="links">
   <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post %>
+  <% else %>
+  <%= link_to "Deselect This Item", "/items/#{@item.id}/selected", method: :post %>
 </div>
+<% end %>
 
 <div class="links">
   <p><%= link_to "Back To Items", items_path %></p>

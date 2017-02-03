@@ -5,7 +5,7 @@
 
 <h4>Items Borrowed:</h2>
   <% @items.each do |item| %>
-  <h4><%= item.name%></h4><br>
+  <h4><%= item.name%></h4><br><%= link_to "Deselect This Item", item_path(item)%><br>
 <% end %>
 
 <div>

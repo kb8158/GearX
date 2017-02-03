@@ -1,9 +1,11 @@
 .mySlides{
   height: 200px;
-  opacity: .65;
+  opacity: 1;
   width: 100%;
 }
-
+#app{
+  margin-right: 0px;
+}
 nav{
   height: 70px;
   background: linear-gradient( to top, #a3c2c2, #556a8c);
