@@ -1,10 +1,11 @@
 <h2 class="text-center"><%= @user.first_name%></h2>
 
 <div class="page">
-  
-<h4>Items Borrowed</h2>
+
+
+<h4>Items Borrowed:</h2>
   <% @items.each do |item| %>
-  <%= item.name%><br>
+  <h4><%= item.name%></h4><br>
 <% end %>
 
 <div>

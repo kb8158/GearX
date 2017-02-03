@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
 
   def edit
   @item = Item.find(params[:id])
-    if @item.user != current_user
+    if @item.lender != current_user
       flash[:notice] =  "Only item owner can update item information"
       redirect_to item_path(@item)
     end
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.user == current_user
+    if @item.lender == current_user
       flash[:notice] =  "Item updated successfully"
       redirect_to item_path(@item)
     else
@@ -48,12 +48,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.borrower = current_user
     @item.save
-    SelectedMailer.selected_item(@item).deliver_later
+    SelectedMailer.selected(@item).deliver_later
   end
 
   def destroy
     @item = Item.find(params[:id])
-    if @item.user == current_user
+    if @item.lender == current_user
       @item.destroy
       redirect_to items_path
     else
