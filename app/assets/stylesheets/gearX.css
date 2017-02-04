@@ -1,16 +1,19 @@
 .mySlides{
   height: 200px;
-  opacity: .65;
+  opacity: 1;
   width: 100%;
 }
-
+#app{
+  margin-right: 0px;
+}
 nav{
-  height: 50px;
-  background-color: white;
+  height: 70px;
+  background: linear-gradient( to top, #a3c2c2, #556a8c);
 }
 
 body{
   background-color: #a3c2c2;
+  font-family: 'Eczar', serif;
 }
 
 .box{
@@ -46,6 +49,39 @@ body{
   margin-right: 20px;
 }
 
-.home {
-  margin-top: 50px;
+.page{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.title{
+  font-size: 100pt;
+  font-style: bold;
+}
+
+.input-mysize{
+  width: 1000px;
+}
+
+.page{
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.pro img{
+  width: 250px;
+  height: 250px;
+  margin-left: 13%;
+  border: 5px;
+  border-style: solid;
+  border-color: linear-gradient( to top, #a3c2c2, #556a8c);
+}
+
+.pro{
+  height: 270px;
+  padding: 5px;
+  font-size: 16pt;
+}
+.field{
+  padding: 5px;
 }

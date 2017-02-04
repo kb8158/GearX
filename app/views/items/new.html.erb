@@ -4,33 +4,49 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-md-6 ">
+      <div class="col-lg-6 ">
         <div class="field">
-          <%= f.label :name, 'Name' %>
-          <%= f.text_field :name %>
-          <%= f.label :image, "Image" %>
-          <%= f.text_field :image %>
-          <%= f.label :size, "Size" %>
-          <%= f.text_field :size %>
-          <%= f.label :zip_code, "Location" %>
-          <%= f.text_field :zip_code %>
+          <%= f.label :name, 'Name' %><br>
+          <%= f.text_field :name %><br>
+        </div>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="field">
+          <%= f.label :image, "Image" %><br>
+          <%= f.text_field :image %><br>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-lg-6 ">
         <div class="field">
-          <%= f.label :body, "Description" %>
+          <%= f.label :size, "Size" %><br>
+          <%= f.text_field :size %><br>
+        </div>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="field">
+          <%= f.label :zip_code, "Location" %><br>
+          <%= f.text_field :zip_code %><br>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="field">
+          <%= f.label :body, "Description" %><br>
           <%= f.text_field :body %>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-lg-6">
+         <div class="actions">
+            <%= f.submit "Add Item"%>
+         </div>
+        <% end %>
+    <%= link_to "Back To Items", items_path %>
   </div>
-
-   <div class="actions">
-      <%= f.submit "Add Item"%>
-   </div>
-<% end %>
-<p><%= link_to "Back To Items", items_path %></p>
+</div>

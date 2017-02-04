@@ -1,9 +1,25 @@
 <h2 class="text-center">Explorers</h2>
 
-<div>
-  <% @users.each do |user| %>
-    <p><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%></p>
-  <% end %>
-</div>
+<div class="container">
+  <div>
+        <div class="row">
+          <div class="col-lg-3">
+            <% @users.each do |user| %>
+        <h4><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%></h4>
+      <% end %>
+    </div>
+    <div class="col-lg-9">
+      <div class="offer-view image-only">
+        <div class="offer-image text-center">
+          <img src="http://i.imgur.com/9hpJOcJ.png" style="padding-bottom: 0px;">
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p><%= link_to "Back To Home", root_path %></p>
+  <div class="row">
+    <div class="col-lg-3">
+      <p><%= link_to "Back To Home", root_path %></p>
+    </div>
+  </div>
+</div>
