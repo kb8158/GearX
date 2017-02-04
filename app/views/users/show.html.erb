@@ -1,14 +1,27 @@
 <h2 class="text-center"><%= @user.first_name%></h2>
 
 <div class="page">
+  <div class="contatiner">
+    <div class="row">
+      <div class="col-lg-4 center-block pro">
+        <p><%= image_tag(@user.profile_photo) %> </p>
+      </div>
+      <div class="col-lg-8 pro">
+        <h3>Profile:</h3>
+        <p><%= @user.profile %></p>
+      </div>
+    </div>
 
-
-<h4>Items Borrowed:</h2>
-  <% @items.each do |item| %>
-  <h4><%= item.name%></h4><br><%= link_to "Deselect This Item", item_path(item)%><br>
-<% end %>
-
-<div>
-  <p><%= link_to "Back To List of Explorers", users_path %></p>
+<div class="container">
+  <h3>Items Borrowed:</h3>
+    <div class="row">
+      <div class="col-lg-12">
+        <% @items.each do |item| %>
+        <h4><%= item.name%></h4><br><%= link_to "Deselect This Item", item_path(item)%><br>
+        <% end %>
+      </div>
+    </div>
   </div>
+
+  <p><%= link_to "Back To List of Explorers", users_path %></p>
 </div>

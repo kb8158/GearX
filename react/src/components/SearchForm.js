@@ -12,6 +12,6 @@ const SearchForm = props => {
       {searchedItem}
       </div>
     );
-}
+};
 
 export default SearchForm;

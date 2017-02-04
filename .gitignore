@@ -21,5 +21,10 @@
 /app/assets/javascripts/bundle.js
 /react/coverage
 
+
+
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore uploaded files in test/development
+/public/uploads

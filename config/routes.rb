@@ -11,9 +11,7 @@ Rails.application.routes.draw do
   post "/items/:id/selected", to: 'items#selected'
 
 
-  resources :elements
-
-  resources :users, only: [:index, :show, :destroy]
+  resources :users, only: [:index, :show, :edit, :destroy]
 
   resources :homes, only: [:index]
 

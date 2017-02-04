@@ -9,4 +9,34 @@ class UsersController < ApplicationController
     @items = Item.where(borrower_id: @user.id)
   end
 
+  def edit
+  @user = User.find(params[:id])
+    if @user.lender != current_user
+      flash[:notice] =  "Account owner can update information"
+      redirect_to item_path(@item)
+    end
+  end
+  #
+  # def update
+  #   @user = User.find(params[:id])
+  #   if @user.lender == current_user
+  #     flash[:notice] =  "Item updated successfully"
+  #     redirect_to item_path(@item)
+  #   else
+  #     flash.now[:notice] = @item.errors.full_messages
+  #     render :edit
+  #   end
+  # end
+  #
+  # private
+  #
+  # def user_params
+  #   params.require(:user).permit(:first_name, :last_name, :email, :profile)
+  # end
+  def destroy
+    @user = User.find(params[:id])
+    @user.lender.destroy_all
+    @user.destroy
+    redirect_to users_path
+  end
 end
