@@ -28,11 +28,10 @@
 <% end %>
 
 <div class="links">
-  <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post %>
+  <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
 </div>
 
 
 <div class="links">
   <p><%= link_to "Back To Items", items_path %></p>
-
 </div>

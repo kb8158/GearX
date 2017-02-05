@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col-lg-12">
       <% @items.each do |item| %>
-      <h4><%= item.name%></h4><br><%= link_to "Deselect This Item", item_path(item)%><br>
+      <h4><%= item.name%></h4><br><%= link_to "Deselect This Item", "/items/#{item.id}/selected", method: :post, data: { confirm: "Are you sure?" }%><br>
       <% end %>
     </div>
   </div>

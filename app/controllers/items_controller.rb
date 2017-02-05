@@ -46,10 +46,18 @@ class ItemsController < ApplicationController
 
   def selected
     @item = Item.find(params[:id])
-    @item.borrower = current_user
-    @item.save
-    SelectedMailer.selected(@item).deliver_later
-    redirect_to items_path
+    if @item.borrower == nil
+      @item.borrower = current_user
+      @item.save
+      SelectedMailer.selected(@item).deliver_later
+      flash[:notice] =  "Item selected successfully!"
+      redirect_to user_path(current_user)
+    elsif @item.borrower == current_user
+      @item.borrower = nil
+      @item.save
+      flash[:notice] =  "Item De-selected successfully"
+      redirect_to items_path
+    end
   end
 
   def destroy
