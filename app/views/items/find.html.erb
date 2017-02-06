@@ -1,0 +1,12 @@
+<h2>Find your gear </h2>
+
+
+<% @items.each do |item| %>
+  <% link_to "#{item.name}" "#{item.zip_code}" %>
+<% end %>
+
+
+<%= form_for (@items) %>
+  <input id="find_address" name="find[address]" size="30" type="text" value="Enter your address" />
+  <input id="find_distance" name="find[distance]" size="5" type="text" value="dist" />
+<%= t.submit 'Find Gear!' %>

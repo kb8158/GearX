@@ -1,0 +1,10 @@
+<%= form_for [@item, @review] do |f| %>
+  <div class="field">
+    <%= f.label :body, "Review" %><br>
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="actions">
+     <%= f.submit "Add Review"%>
+  </div>
+<% end %>

@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @items = Item.where(borrower_id: @user.id)
+    @review = Review.new
+    @reviews = Review.where(user_id: @user.id)
   end
 
   def edit
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
       redirect_to item_path(@item)
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.lender == current_user

@@ -3,9 +3,11 @@
   opacity: 1;
   width: 100%;
 }
-#app{
-  margin-right: 0px;
+
+.log{
+  text-align: center;
 }
+
 nav{
   height: 70px;
   background: linear-gradient( to top, #a3c2c2, #556a8c);
@@ -72,9 +74,8 @@ body{
   width: 250px;
   height: 250px;
   margin-left: 13%;
-  border: 5px;
+  border: 2px;
   border-style: solid;
-  border-color: linear-gradient( to top, #a3c2c2, #556a8c);
 }
 
 .pro{
