@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   resources :items
   post "/items/:id/selected", to: 'items#selected'
 
+  resources :users do
+    resources :items do
+      resources :reviews, only: [:new, :edit, :update, :create, :destroy] do
+      end
+    end
+  end  
 
   resources :users, only: [:index, :show, :edit, :destroy]
 

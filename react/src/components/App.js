@@ -44,6 +44,8 @@ class App extends Component {
               name={item.name}
               image={item.image}
               description={item.body}
+              size={item.size}
+              location={item.zip_code}
             />
           </div>
         )

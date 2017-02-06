@@ -1,6 +1,5 @@
 <h2 class="text-center"><%= @user.first_name%></h2>
 
-
 <div class="contatiner">
   <div class="row">
     <div class="col-lg-4 center-block pro">
@@ -15,14 +14,32 @@
 
 <div class="container">
   <h3>Items Borrowed:</h3>
-  <div class="row">
-    <div class="col-lg-12">
-      <% @items.each do |item| %>
-      <h4><%= item.name%></h4><br><%= link_to "Deselect This Item", "/items/#{item.id}/selected", method: :post, data: { confirm: "Are you sure?" }%><br>
-      <% end %>
+</div>
+
+  <% @items.each do |item| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h4><%= item.name%></h4><br>
+          <% if item.borrower == current_user %>
+            <%= link_to "Add a review", "/items/#{item.id}/reviews/new", method: :get %><br>
+            <%= link_to "Deselect This Item", "/items/#{item.id}/selected", method: :post, data: { confirm: "Are you sure?" }%><br>
+          <% end %>
+          <% @reviews.each do |review| %>
+            <%= review.body %>
+            <% if review.user == item.borrower %>
+              <%= link_to "Update Review", "/users/#{review.user.id}/items/#{item.id}/reviews/#{review.id}/edit", params:{review: review.id}%></br>
+            <% end %>
+            <% if review.user == item.borrower %>
+              <%= link_to "Delete", "/users/#{review.user.id}/items/#{item.id}/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+
+
 
 <div class="contatiner">
   <div class="row">
