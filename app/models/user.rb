@@ -13,4 +13,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def signed_in
+    current_user
+  end
 end

@@ -3,6 +3,7 @@
   <%= form_for(@item) do |f| %>
 
 <div class="container">
+  <div class="col-lg-6 text-center form">
     <div class="row">
       <div class="col-lg-6 ">
         <div class="field">
@@ -31,8 +32,6 @@
         </div>
       </div>
     </div>
-
-
     <div class="row">
       <div class="col-lg-6">
         <div class="field">
@@ -40,13 +39,14 @@
           <%= f.text_field :body %>
         </div>
       </div>
-    </div>
-    <div class="row">
       <div class="col-lg-6">
          <div class="actions">
+           <br>
             <%= f.submit "Add Item"%>
          </div>
         <% end %>
-    <%= link_to "Back To Items", items_path %>
+      </div>
+    </div>
   </div>
 </div>
+<h5 class="text-center"><%= link_to "Back To Items", items_path %></h5>

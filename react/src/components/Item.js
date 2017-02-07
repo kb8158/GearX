@@ -27,10 +27,9 @@ class Item extends Component {
       borrower_id: this.state.currentUser,
       item_id: itemID
     }
-
     let json = JSON.stringify(data);
-    fetch(`api/v1/items/${itemID}/selected`, {
-      credentials: "same-origin",
+    fetch(`/api/v1/items/${itemID}/selected`, {
+      credentials: "include",
       method: "post",
       headers: { 'Content-Type': 'application/json' },
       body: json
@@ -40,23 +39,25 @@ class Item extends Component {
     })
   }
 
+
   fetching () {
-    fetch('/api/v1/items')
-      .then(response => {
-        if (response.ok) {
-          return response;
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let data = body.items;
-        let user = body.user;
-        debugger
-        this.setState({
-          items: data,
-          currentUser: user
-        });
+    fetch('/api/v1/items', {
+      credentials: "include",
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let data = body.items;
+      let user = body.user;
+      this.setState({
+        items: data,
+        currentUser: user
       });
+    });
   }
 
   componentDidMount() {
@@ -97,6 +98,7 @@ class Item extends Component {
                 selectedID = {this.state.selectedItemID}
                 item = {item}
                 onSubmit = {onSubmit}
+                currentUser = {this.state.currentUser}
                 />
           </div>
         );

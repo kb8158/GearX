@@ -1,5 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token, only: [:create, :update, :selected]
 
   def index
     @items = Item.available
@@ -8,9 +8,8 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def selected
-
     @item = Item.find(params[:item_id])
-    @user = User.find(params[:borrower_id])
+    @user = current_user
     if @item.borrower == nil
       @item.borrower = @user
       @item.save
