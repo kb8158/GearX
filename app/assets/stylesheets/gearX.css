@@ -86,3 +86,17 @@ body{
 .field{
   padding: 5px;
 }
+
+.form{
+  margin-left: 25%;
+  border: 2px;
+  border-radius: 2%;
+  border-color: #556a8c;
+  border-style: solid;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.login{
+  margin: 0 auto;
+}

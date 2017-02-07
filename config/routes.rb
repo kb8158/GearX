@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :items, only: [:index]
+      resources :items, only: [:index] do
+        post "/selected", to: 'items#selected'
+      end
     end
   end
 
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:new, :edit, :update, :create, :destroy] do
       end
     end
-  end  
+  end
 
   resources :users, only: [:index, :show, :edit, :destroy]
 

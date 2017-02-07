@@ -1,36 +1,70 @@
 import React, { Component } from 'react';
-import Item from "./Item";
+import ItemDisplay from "./ItemDisplay";
 
-class App extends Component {
+class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [],
+      selectedItemID: null,
+      currentUser: null
     };
-    this.fetching = this.fetching.bind(this);
+    this.handleItemClick = this.handleItemClick.bind(this)
+    this.fetching = this.fetching.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  fetching () {
-    fetch('/api/v1/items')
-      .then(response => {
-        if (response.ok) {
-          return response;
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let data = body;
+  handleItemClick(id) {
+    let selectedID = id;
+    if(id === this.state.selectedItemId){
+      selectedID = null
+    }
+    this.setState({selectedItemID: selectedID})
+  }
 
-        this.setState({ items: data });
+  handleSubmit(itemID){
+    let data = {
+      borrower_id: this.state.currentUser,
+      item_id: itemID
+    }
+    let json = JSON.stringify(data);
+    fetch(`/api/v1/items/${itemID}/selected`, {
+      credentials: "include",
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: json
+    })
+    .then(response=>{
+      this.fetching();
+    })
+  }
+
+
+  fetching () {
+    fetch('/api/v1/items', {
+      credentials: "include",
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let data = body.items;
+      let user = body.user;
+      this.setState({
+        items: data,
+        currentUser: user
       });
+    });
   }
 
   componentDidMount() {
     this.fetching();
     setInterval(
-      this.fetching, 10000);
+      this.fetching, 100000);
   }
-
 
   render() {
     let items = '';
@@ -41,16 +75,35 @@ class App extends Component {
         if (item == this.state.items[this.state.items.length - 1]) {
           className += ' end';
         }
-      return (
-        <div key={item.id}>
-          <a href={`/items/${item.id}`}>
-            <p>{item.name}</p>
-            <img src={item.image}/>
-          </a>
-        </div>
-      );
-    });
-  }
+        let selected;
+          if (item.id === this.state.selectedItemID) {
+            selected = true;
+          }
+
+        let onItemClick = () => {
+          this.handleItemClick(item.id);
+        }
+
+        let onSubmit = (event) =>{
+          event.preventDefault();
+          this.handleSubmit(item.id)
+        }
+
+        return (
+          <div key={item.id}>
+            <a href="javascript:;" onClick={onItemClick}>
+              <h3>{item.name}</h3></a>
+              <img src={item.image}/>
+              < ItemDisplay
+                selectedID = {this.state.selectedItemID}
+                item = {item}
+                onSubmit = {onSubmit}
+                currentUser = {this.state.currentUser}
+                />
+          </div>
+        );
+      });
+    }
 
     return (
       <div>
@@ -60,4 +113,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Item;
