@@ -12,6 +12,7 @@ class Item extends Component {
     this.handleItemClick = this.handleItemClick.bind(this)
     this.fetching = this.fetching.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleItemDelete = this.handleItemDelete.bind(this)
   }
 
   handleItemClick(id) {
@@ -39,6 +40,15 @@ class Item extends Component {
     })
   }
 
+  handleItemDelete(itemID){
+    fetch(`/api/v1/items/${itemID}`,{
+      credentials: "include",
+      method: "delete",
+    })
+    .then(response=>{
+      this.fetching()
+    })
+  }
 
   fetching () {
     fetch('/api/v1/items', {
@@ -89,6 +99,11 @@ class Item extends Component {
           this.handleSubmit(item.id)
         }
 
+        let onDelete = (event) => {
+          event.preventDefault();
+          this.handleItemDelete(item.id)
+        }
+
         return (
           <div key={item.id}>
             <a href="javascript:;" onClick={onItemClick}>
@@ -98,6 +113,7 @@ class Item extends Component {
                 selectedID = {this.state.selectedItemID}
                 item = {item}
                 onSubmit = {onSubmit}
+                onDelete = {onDelete}   
                 currentUser = {this.state.currentUser}
                 />
           </div>
