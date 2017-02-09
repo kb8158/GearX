@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
 import Thing from "./Thing";
 
-
 class List extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      things: [],
+      thingData: [],
     };
     this.fetching = this.fetching.bind(this);
   }
 
   fetching () {
-    fetch('/api/v1/things', {
-      credentials: "include",
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      debugger
-      let data = body.things;
-      this.setState({
-        things: data,
+    fetch('/api/v1/things')
+      .then(response => {
+        if (response.ok) {
+          return response;
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        let data = body;
+
+        this.setState({ thingData: data });
       });
-    });
   }
 
   componentDidMount() {
@@ -37,16 +32,16 @@ class List extends Component {
   }
 
   render(){
+
     let things;
     if (this.state.thingData) {
-      things = this.state.things.map(thing => {
+      things = this.state.thingData.map(thing => {
         return(
           <div>
             <Thing
               key={thing.id}
               id={thing.id}
               name={thing.name}
-              description={thing.body}
             />
           </div>
         )
