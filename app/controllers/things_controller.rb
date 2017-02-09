@@ -1,7 +1,7 @@
 class ThingsController < ApplicationController
 
   def index
-    @things = Thing.needed
+    @things = Thing.all
   end
 
   def show

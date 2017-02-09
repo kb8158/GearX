@@ -106,9 +106,7 @@ class Item extends Component {
 
         return (
           <div key={item.id} className={className}>
-
               <a href="javascript:;" onClick={onItemClick}>
-
                 <h3>{item.name}</h3></a>
                 <img src={item.image}/>
                 <div className='item-content'>
