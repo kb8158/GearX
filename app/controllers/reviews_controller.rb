@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @item = Item.find(params[:item_id])
     @review = Review.new(review_params)
     @review.item = @item
+    @review.user = current_user
     @review.save
     redirect_to user_path(@item.borrower)
   end
@@ -21,7 +22,6 @@ class ReviewsController < ApplicationController
   def update
     @item = Item.find(params[:item_id])
     @review = Review.find(params[:id])
-
   end
 
   def destroy

@@ -73,7 +73,7 @@ class Item extends Component {
   componentDidMount() {
     this.fetching();
     setInterval(
-      this.fetching, 100000);
+      this.fetching, 10000);
   }
 
   render() {
@@ -81,7 +81,7 @@ class Item extends Component {
     if (this.state.items) {
       items = this.state.items.filter((item)=>{return item.name.toLowerCase().search(this.props.query.toLowerCase()) > -1; });
       items = items.map((item) => {
-        let className = 'col-lg-6';
+        let className='col-lg-4';
         if (item == this.state.items[this.state.items.length - 1]) {
           className += ' end';
         }
@@ -105,17 +105,21 @@ class Item extends Component {
         }
 
         return (
-          <div key={item.id}>
-            <a href="javascript:;" onClick={onItemClick}>
-              <h3>{item.name}</h3></a>
-              <img src={item.image}/>
-              < ItemDisplay
-                selectedID = {this.state.selectedItemID}
-                item = {item}
-                onSubmit = {onSubmit}
-                onDelete = {onDelete}   
-                currentUser = {this.state.currentUser}
-                />
+          <div key={item.id} className={className}>
+
+              <a href="javascript:;" onClick={onItemClick}>
+
+                <h3>{item.name}</h3></a>
+                <img src={item.image}/>
+                <div className='item-content'>
+                < ItemDisplay
+                  selectedID = {this.state.selectedItemID}
+                  item = {item}
+                  onSubmit = {onSubmit}
+                  onDelete = {onDelete}
+                  currentUser = {this.state.currentUser}
+                  />
+              </div>
           </div>
         );
       });

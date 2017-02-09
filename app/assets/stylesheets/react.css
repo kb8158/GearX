@@ -1,6 +1,3 @@
-#app{
-  text-align: center;
-}
 
 #app img{
   max-width: 300px;
@@ -10,4 +7,23 @@
   border-style: solid;
   border-color: black;
   text-align: center;
+}
+
+.item{
+  display: inline-block;
+  border: solid;
+  border-color: #556a8c;
+  padding: 10px;
+}
+
+.des-box{
+  font-size: 15pt;
+  font-style: bold;
+
+}
+
+.select{
+  font-size: 10pt;
+  text-align: center;
+  margin: 10px;
 }

@@ -1,8 +1,9 @@
 import 'babel-polyfill';
+import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-
+import List form './components/List';
 
 
 $(function() {
@@ -17,7 +18,7 @@ $(function() {
 $(function() {
   if (document.getElementById('root')) {
   ReactDOM.render(
-    <WishList/>,
+    <List/>,
     document.getElementById('root')
     );
   }

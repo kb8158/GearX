@@ -4,11 +4,11 @@ const SearchForm = props => {
   let handleChange = (event) => props.handleSearch(event.target.value);
 
   let searchedItem = null;
-  
+
   return(
     <div>
-      <h2>Find your Gear</h2>
-      <input type="text" onChange={handleChange} placeholder="Search" />
+      <h2 className="text-center">Find your Gear: <input type="text" onChange={handleChange} placeholder="Search" /><a href="/items/new">Or Add a New Item</a></h2>
+
       {searchedItem}
       </div>
     );

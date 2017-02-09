@@ -11,28 +11,30 @@ const ItemDisplay = props => {
 
   let remove;
   if(props.item.lender_id === props.currentUser.id){
-    remove = <form onSubmit={props.onDelete}><button type="submit">Delete This Item</button></form>
+    remove = <span><form onSubmit={props.onDelete}><button type="submit">Delete This Item</button></form></span>
   }
 
   let update;
   if(props.item.lender_id === props.currentUser.id){
-    update = <a href={`/items/${props.item.id}/edit`}>Update This Item</a>
+    update = <span><button><a href={`/items/${props.item.id}/edit`}>Update This Item</a></button></span>
   }
 
   let itemShow = props => {
 
     if(props.selectedID === props.item.id) {
-      itemDiv = <div className="item">{props.item.body}
-                  <div>{props.item.size}</div>
-                    {select}
-                    {remove}
-                    {update}
+      itemDiv = <div className="col-lg-12 des-box">Description: {props.item.body}
+                  <div> Size: {props.item.size}</div>
+                    <div className="select">
+                      {select}
+                      {remove}
+                      {update}
+                    </div>
                   </div>
       return itemDiv;
     }
   }
   return(
-    <div className="contain">
+    <div>
       {itemShow(props)}
       </div>
   )

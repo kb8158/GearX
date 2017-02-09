@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :items_listed, class_name: "Item", foreign_key: "lender_id"
   has_many :items_borrowed, class_name: "Item", foreign_key: "borrower_id"
 
+  has_many :things_searched, class_name: "Thing", foreign_key: "searcher_id"
+  has_many :things_found, class_name: "Thing", foreign_key: "finder_id"
+
   validates :first_name, presence: true
   validates :last_name, presence: true
 

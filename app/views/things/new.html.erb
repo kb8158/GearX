@@ -1,0 +1,52 @@
+<h1 class= "text-center">Add What Equipment Are You Looking For?</h1>
+
+  <%= form_for(@thing) do |f| %>
+
+<div class="container">
+  <div class="col-lg-6 text-center form">
+    <div class="row">
+      <div class="col-lg-6 ">
+        <div class="field">
+          <%= f.label :name, 'Name' %><br>
+          <%= f.text_field :name %><br>
+        </div>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="field">
+          <%= f.label :days, "Duration of trip?" %><br>
+          <%= f.text_field :days %><br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 ">
+        <div class="field">
+          <%= f.label :date, "Date Needed" %><br>
+          <%= f.text_field :date %><br>
+        </div>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="field">
+          <%= f.label :zip_code, "Location" %><br>
+          <%= f.text_field :zip_code %><br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="field">
+          <%= f.label :body, "Description" %><br>
+          <%= f.text_field :body %>
+        </div>
+      </div>
+      <div class="col-lg-6">
+         <div class="actions">
+           <br>
+            <%= f.submit "Add Item"%>
+         </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<h5 class="text-center"><%= link_to "Back To Items", items_path %></h5>
