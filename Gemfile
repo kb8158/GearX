@@ -10,6 +10,7 @@ gem "devise"
 gem "carrierwave"
 gem 'geokit-rails'
 
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'

@@ -25,6 +25,9 @@
       <div class="navbar-text navbar-right">
         <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Change My User Info', edit_user_registration_path %></button>
       </div>
+      <div class="navbar-text">
+        <button type="button" class="btn btn-default btn-sm btn-block home"><%= link_to "Back To Home", root_path %></button>
+      </div>
       <div class="navbar-text navbar-left">
         <%else%>
           <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Sign In', new_user_session_path %></button>

@@ -62,11 +62,11 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    if @item.lender == current_user || @item.borrower
+    if @item.lender == current_user
       @item.destroy
       redirect_to items_path
     else
-      flash[:notice] =  "Only item owner or Admin can delete item"
+      flash[:notice] =  "Only item owner"
       redirect_to item_path(@item)
     end
   end

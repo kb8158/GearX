@@ -18,6 +18,10 @@ body{
   font-family: 'Eczar', serif;
 }
 
+.home{
+  margin: 0 auto;
+}
+
 .box{
   border: 5px;
   border-style: solid;
