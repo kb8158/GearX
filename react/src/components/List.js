@@ -25,17 +25,19 @@ class List extends Component {
 
   handleSubmit(thingID){
     let data = {
-      finder_id: this.state.currentUser,
+      finder_id: this.state.currentUser.id,
       thing_id: thingID
     }
     let json = JSON.stringify(data);
-    fetch(`/api/v1/things/${thingID}/chosen.json`, {
+    // debugger;
+    fetch(`/api/v1/things/${thingID}/chosen`, {
       credentials: "include",
       method: "post",
       headers: { 'Content-Type': 'application/json' },
       body: json
     })
     .then(response=>{
+    // debugger;
       this.fetching()
     })
   }

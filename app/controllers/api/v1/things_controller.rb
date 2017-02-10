@@ -2,23 +2,23 @@ class Api::V1::ThingsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:create, :update, :chosen, :destroy]
 
   def index
-    @things = Thing.all
+    @things = Thing.needed
     @user = current_user
     render json: {things: @things, user: @user }
   end
 
   def chosen
-    @thing = Thing.find(params[:id])
+    @thing = Thing.find(params[:thing_id])
     @user = current_user
-    if @thing.finder == nil
-      @thing.finder = @user
+    if @thing.finder_id == nil
+      @thing.finder_id = @user
       @thing.save
-      flash[:notice] =  "Thing selected successfully!"
-      redirect_to user_path(current_user)
-    elsif @thing.finder == @user
-      @thing.finder = nil
+      flash[:notice] =  "Item selected successfully!"
+      redirect_to things_path
+    elsif @thing.finder_id == @user.id
+      @thing.finder_id = nil
       @thing.save
-      flash[:notice] =  "Thing De-selected successfully"
+      flash[:notice] =  "Item De-selected successfully"
       redirect_to things_path
     end
   end
