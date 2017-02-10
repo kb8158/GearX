@@ -16,6 +16,10 @@
   padding: 10px;
 }
 
+.form{
+  background: rgba(225, 225, 225, .8);
+}
+
 .des-box{
   font-size: 15pt;
   font-style: bold;

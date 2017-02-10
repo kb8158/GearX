@@ -17,31 +17,36 @@
 </div>
 
 <div class="container">
-    <% @items.each do |item| %>
-      <div class="row">
-        <div class="col-lg-3">
-          <h4><%= item.name%></h4><br>
-          <% if item.borrower == current_user %>
-            <button><%= link_to "Add a review", "/items/#{item.id}/reviews/new", method: :get %></button><br>
-            <button><%= link_to "Deselect This Item", "/items/#{item.id}/selected", method: :post, data: { confirm: "Are you sure?" }%></button>
-          <% end %>
-        </div>
-        <% @reviews.each do |review| %>
-          <div class="col-lg-6">
-            <%if item.id == review.item.id %>
-              <h4>Review: <%= review.body %></h4>
-          </div>
+      <div class="col-lg-12 review">
+        <% @items.each do |item| %>
+          <div class="row">
             <div class="col-lg-3">
-              <% if review.user == item.borrower %>
-                <button><%= link_to "Update Review", "items/#{item.id}/reviews/#{review.id}/edit", params:{review: review.id}%></button><br>
-              <% end %>
-              <% if review.user == item.borrower %>
-                <button><%= link_to "Delete", "/items/#{item.id}/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %></button>
+              <h4><%= item.name%></h4><br>
+              <% if item.borrower == current_user %>
+                <button><%= link_to "Add a review", "/items/#{item.id}/reviews/new", method: :get %></button><br>
+                <button><%= link_to "Deselect This Item", "/items/#{item.id}/selected", method: :post, data: { confirm: "Are you sure?" }%></button>
               <% end %>
             </div>
+            <% @reviews.each do |review| %>
+              <div class="col-lg-6">
+                <%if item.id == review.item.id %>
+                  <h4>Review: <%= review.body %></h4>
+              </div>
+                <div class="col-lg-3">
+                  <% if review.user == item.borrower %>
+                    <button><%= link_to "Update Review", "items/#{item.id}/reviews/#{review.id}/edit", params:{review: review.id}%></button><br>
+                  <% end %>
+                  <% if review.user == item.borrower %>
+                    <button><%= link_to "Delete", "/items/#{item.id}/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %></button>
+                  <% end %>
+                <% end %>
+  
+              </div>
+
           <% end %>
         <% end %>
-    <% end %>
+      </div>
+
   </div>
 </div>
 
