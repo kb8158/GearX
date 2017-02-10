@@ -15,7 +15,11 @@ nav{
 
 body{
   background-color: #a3c2c2;
-  font-family: 'Eczar', serif;
+  font-family: 'Abel', sans-serif;
+}
+
+h1 {
+  font-family: 'Cabin Sketch', cursive;
 }
 
 .home{
@@ -103,4 +107,10 @@ body{
 
 .login{
   margin: 0 auto;
+}
+
+.review{
+  background: rgba(225, 225, 225, .8);
+  margin: 5px;
+  padding: 5px;
 }

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :things do
-        post"/chosen", to: "things#chosen"
+        post "/chosen", to: 'things#chosen'
       end
     end
   end
