@@ -11,16 +11,18 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :things, only: [:index]
+      resources :things do
+        post"/chosen", to: "things#chosen"
+      end
     end
-  end  
+  end
 
 
   resources :items
   post "/items/:id/selected", to: 'items#selected'
 
   resources :things
-
+  post "/things/:id/chosen", to: "things#chosen"
 
   resources :items do
     resources :reviews

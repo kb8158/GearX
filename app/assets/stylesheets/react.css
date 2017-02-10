@@ -19,11 +19,17 @@
 .des-box{
   font-size: 15pt;
   font-style: bold;
-
+  background: rgba(225, 225, 225, .8);
+  max-width: 300px;
 }
 
 .select{
   font-size: 10pt;
   text-align: center;
   margin: 10px;
+}
+
+.thing{
+  background: rgba(225, 225, 225, .8);
+  font-size: 15pt;
 }

@@ -52,6 +52,21 @@ class ThingsController < ApplicationController
     end
   end
 
+  def chosen
+    @thing = Thing.find(params[:id])
+    if @thing.finder == nil
+      @thing.finder = current_user
+      @thing.save
+      flash[:notice] =  "Item selected successfully!"
+      redirect_to user_path(current_user)
+    elsif @thing.finder == current_user
+      @thing.finder = nil
+      @thing.save
+      flash[:notice] =  "Item De-selected successfully"
+      redirect_to things_path
+    end
+  end
+
   private
 
   def thing_params

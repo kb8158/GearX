@@ -36,7 +36,7 @@ const ItemDisplay = props => {
   return(
     <div>
       {itemShow(props)}
-      </div>
+    </div>
   )
 }
 
