@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 <div class="container">
-  <div class="col-lg-9 text-center form">
+  <div class="col-lg-8 col-offset-2 centered text-center form">
     <div class="row">
       <div class="col-lg-6">
         <div class="field">
@@ -58,20 +58,17 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-1">
+      <div class="col-lg-6">
         <div class="actions">
           <%= f.submit "Update" %>
         </div>
       <% end %>
       </div>
-      <div class="col-lg-5">
-        <div class="link">
-        <%= link_to "Back To Home", root_path %>
-        </div>
-      </div>
-      <div class="col-lg-3">
+      <div class="col-lg-6">
         <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>

@@ -3,19 +3,16 @@ class ThingsController < ApplicationController
   def index
     @things = Thing.all
     @new_thing = Thing.new
-    @new_item = Item.new
   end
 
   def show
     @thing = Thing.find(params[:id])
     @new_thing = Thing.new
-    @new_item = Item.new
   end
 
   def new
     @thing = Thing.new
     @new_thing = Thing.new
-    @new_item = Item.new
   end
 
   def create

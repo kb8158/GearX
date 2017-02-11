@@ -5,9 +5,10 @@ class Thing < ApplicationRecord
   validates :name, presence: true
   validates :body, presence: true
   validates :zip_code, numericality: true, length: { is: 5}
+  validates :days, numericality: true
 
   def self.needed
     where(finder_id: nil)
-  end  
+  end
 
 end
