@@ -3,6 +3,8 @@ class ReviewsController < ApplicationController
   def new
     @item = Item.find(params[:item_id])
     @review = Review.new
+    @new_thing = Thing.new
+    @new_item = Item.new
   end
 
   def create

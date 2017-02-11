@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+  authenticate :user do
+    resources :items
+    resources :things
+  end
 
   resources :items
   post "/items/:id/selected", to: 'items#selected'

@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @new_thing = Thing.new
+    @new_item = Item.new
   end
 
   def show
@@ -9,6 +11,8 @@ class UsersController < ApplicationController
     @items = Item.where(borrower_id: @user.id)
     @review = Review.new
     @reviews = Review.where(user_id: @user.id)
+    @new_thing = Thing.new
+    @new_item = Item.new
   end
 
   def edit
