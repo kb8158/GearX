@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @items = Item.where(borrower_id: @user.id)
     @review = Review.new
     @reviews = Review.where(user_id: @user.id)
+    @item = Item.find(params[:id])
   end
 
   def edit
