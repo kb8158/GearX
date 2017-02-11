@@ -7,8 +7,7 @@ const SearchForm = props => {
 
   return(
     <div>
-      <h2 className="text-center">Find your Gear: <input type="text" onChange={handleChange} placeholder="Search" /></h2>
-       <h2 className="text-center"><a href="/items/new">Add Gear to Lend</a></h2> 
+      <h1 className="text-center">Find your Gear: <input type="text" onChange={handleChange} placeholder="Search" /></h1>
       {searchedItem}
       </div>
     );

@@ -8,7 +8,11 @@
     <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Abel|Cabin+Sketch" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
+
 
   <header class="banner" role="banner" style="width:100%">
     <div class="w3-content w3-section">
@@ -18,21 +22,140 @@
 
   <nav>
     <div class="container">
+      <div class="row">
       <div class="navbar-text navbar-left">
       <% if user_signed_in? %>
-        <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></button>
+        <button type="button" class="btn btn-default btn-sm btn-block col-lg-3"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></button>
+      </div>
+      <div class="navbar-text navbar-left">
+        <button type="button" class="btn btn-default btn-sm btn-block col-lg-3"><%= link_to 'Change My User Info', edit_user_registration_path %></button>
       </div>
       <div class="navbar-text navbar-right">
-        <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Change My User Info', edit_user_registration_path %></button>
-      </div>
-      <div class="navbar-text">
         <button type="button" class="btn btn-default btn-sm btn-block home"><%= link_to "Back To Home", root_path %></button>
       </div>
+      <div class="navbar-text navbar-right">
+        <button type="button" class="btn btn-default btn-sm btn-block home"><a href="#myModal" data-toggle="modal">Add Gear to Lend</a></button>
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title text-center">Add Gear to Lend</h4>
+                        </div>
+                        <div class="modal-body">
+                          <%= form_for(@new_item) do |f| %>
+                          <div class="row">
+                            <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :name, 'Name' %><br>
+                            <%= f.text_field :name %><br>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :image, "Image" %><br>
+                            <%= f.text_field :image %><br>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="row">
+                          <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :size, "Size" %><br>
+                            <%= f.text_field :size %><br>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :zip_code, "Location" %><br>
+                            <%= f.text_field :zip_code %><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :body, "Description" %><br>
+                            <%= f.text_field :body %>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                           <div class="actions">
+                             <br>
+                              <%= f.submit "Add Item"%>
+                           </div>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="navbar-text navbar-right">
+        <button type="button" class="btn btn-default btn-sm btn-block home"><a href="#myModal" data-toggle="modal">What are you looking for?</a></button>
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h1 class="modal-title text-center">What Gear Are you Looking for?</h1>
+                        </div>
+                        <div class="modal-body">
+                          <%= form_for(@new_thing) do |f| %>
+                          <div class="row">
+                            <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :name, 'Name' %><br>
+                            <%= f.text_field :name %><br>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :days, "Duration of trip?" %><br>
+                            <%= f.text_field :days %><br>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="row">
+                          <div class="col-lg-6 ">
+                            <div class="field">
+                              <%= f.label :date, "Date Needed" %><br>
+                              <%= f.text_field :date %><br>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :zip_code, "Location" %><br>
+                            <%= f.text_field :zip_code %><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6 ">
+                          <div class="field">
+                            <%= f.label :body, "Description" %><br>
+                            <%= f.text_field :body %>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                           <div class="actions">
+                             <br>
+                              <%= f.submit "Add Query"%>
+                           </div>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
       <div class="navbar-text navbar-left">
         <%else%>
           <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Sign In', new_user_session_path %></button>
         </div>
-        <div class="navbar-text navbar-right">
+        <div class="navbar-text navbar-left">
           <button type="button" class="btn btn-default btn-sm btn-block"><%= link_to 'Sign Up', new_user_registration_path %></button>
         </div>
       <% end %>
@@ -44,32 +167,13 @@
   <body>
     <% if notice.is_a?(Array) %>
       <% notice.each do |this_notice| %>
-        <%= this_notice %>
+      <h4 class="text-center"><%= this_notice %></h4>
       <% end %>
     <%elsif notice %>
-      <%= notice %>
+    <h4 class="text-center"><%= notice %></h4>
     <% end %>
 
     <%= alert %>
-
-    <script>
-
-    var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-           x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}
-        x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 5000);
-    }
-
-    </script>
 
     <%= yield %>
   </body>
