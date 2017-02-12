@@ -8,7 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem "devise"
 gem "carrierwave"
-gem 'geokit-rails'
+gem 'fog'
 
 
 group :development do
@@ -25,6 +25,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem "dotenv-rails"
 end
 
 group :production do
