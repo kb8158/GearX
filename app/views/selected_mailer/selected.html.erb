@@ -1,0 +1,14 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @item.lender.first_name %>,</h1>
+    <p>
+      Your item <%= @item.name %> has been selected to borrow. They can be reached out at <%= @item.borrower.email %>.
+    </p>
+    <p>Happy Treking!</p>
+  </body>
+</html>
