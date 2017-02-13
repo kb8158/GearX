@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     if @item.borrower == nil
       @item.borrower = current_user
       @item.save
-      SelectedMailer.selected(@item).deliver_later
+      SelectedMailer.selected(@item).deliver_now
       flash[:notice] =  "Item selected successfully!"
       redirect_to user_path(current_user)
     elsif @item.borrower == current_user
