@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem "devise"
 gem "carrierwave"
 gem 'fog'
-
+gem 'sendgrid-ruby'
 
 group :development do
   gem 'listen', '~> 3.0.5'
