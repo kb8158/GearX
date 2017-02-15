@@ -26,6 +26,7 @@ GearX provides a platform to match borrowers and lenders or outdoor equipment. U
 * PostgreSQL
 * CarrierWave
 * Devise
+* Sendgrid
 
 ## Local Setup
 
