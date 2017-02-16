@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
   def index
-    # instead of all items, try showing only the ones where borrower_id is nil
     @items = Item.available
     @new_item = Item.new
   end

@@ -11,8 +11,9 @@ class Api::V1::ThingsController < ApplicationController
     @thing = Thing.find(params[:thing_id])
     @user = current_user
     if @thing.finder_id == nil
-      @thing.finder_id = @user
+      @thing.finder_id = @user.id
       @thing.save
+      ChosenMailer.chosen(@thing).deliver_now
       flash[:notice] =  "Item selected successfully!"
       redirect_to things_path
     elsif @thing.finder_id == @user.id

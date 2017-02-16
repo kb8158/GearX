@@ -1,7 +1,7 @@
 class ThingsController < ApplicationController
 
   def index
-    @things = Thing.all
+    @things = Thing.needed
     @new_thing = Thing.new
   end
 
@@ -60,6 +60,7 @@ class ThingsController < ApplicationController
     if @thing.finder == nil
       @thing.finder = current_user
       @thing.save
+      ChosenMailer.chosen(@thing).deliver_now
       flash[:notice] =  "Item selected successfully!"
       redirect_to user_path(current_user)
     elsif @thing.finder == current_user

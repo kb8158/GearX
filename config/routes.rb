@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :things
   post "/things/:id/chosen", to: "things#chosen"
 
+
   resources :items do
     resources :reviews
   end
