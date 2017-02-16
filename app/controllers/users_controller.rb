@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   def edit
   @user = User.find(params[:id])
   @review = Review.find(params[:id])
-  binding.pry
     if @user.lender != current_user
       flash[:notice] =  "Account owner can update information"
       redirect_to item_path(@item)
