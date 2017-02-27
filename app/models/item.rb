@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   belongs_to :lender, class_name: "User"
-  belongs_to :borrower, class_name: "User", required: false
+  belongs_to :borrower_id, class_name: "User", required: false
+
+  serialize :borrower_id
 
   has_many :reviews
 

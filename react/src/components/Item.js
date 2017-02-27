@@ -35,13 +35,14 @@ class Item extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: json
     })
+
     .then(response=>{
       this.fetching();
     })
   }
 
   handleItemDelete(itemID){
-    fetch(`/api/v1/items/${itemID}`,{
+    fetch(`/api/v1/items/${itemID}`, {
       credentials: "include",
       method: "delete",
     })
@@ -103,7 +104,6 @@ class Item extends Component {
           event.preventDefault();
           this.handleItemDelete(item.id)
         }
-
         return (
           <div key={item.id} className={className}>
               <a href="javascript:;" onClick={onItemClick}>
