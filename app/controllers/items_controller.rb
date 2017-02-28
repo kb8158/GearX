@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.available
+    @items = Item.all
     @new_item = Item.new
   end
 
@@ -48,14 +48,15 @@ class ItemsController < ApplicationController
 
   def selected
     @item = Item.find(params[:id])
-    if @item.borrower == nil
-      @item.borrower = current_user
+    @user = current_user
+    if @item.borrower_id.last != @user.id
+      @item.borrower_id << @user.id
       @item.save
-      SelectedMailer.selected(@item).deliver_now
+      SelectedMailer.selected(@item, @user).deliver_now
       flash[:notice] =  "Item selected successfully!"
       redirect_to user_path(current_user)
-    elsif @item.borrower == current_user
-      @item.borrower = nil
+    else
+      @item.borrower_id.pop
       @item.save
       flash[:notice] =  "Item De-selected successfully"
       redirect_to items_path

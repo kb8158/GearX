@@ -29,7 +29,6 @@ class List extends Component {
       thing_id: thingID
     }
     let json = JSON.stringify(data);
-    // debugger;
     fetch(`/api/v1/things/${thingID}/chosen`, {
       credentials: "include",
       method: "post",
@@ -37,7 +36,6 @@ class List extends Component {
       body: json
     })
     .then(response=>{
-    // debugger;
       this.fetching()
     })
   }

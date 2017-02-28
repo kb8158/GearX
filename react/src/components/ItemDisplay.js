@@ -19,6 +19,8 @@ const ItemDisplay = props => {
     update = <span><button><a href={`/items/${props.item.id}/edit`}>Update This Item</a></button></span>
   }
 
+  let more = <span><button><a href={`/items/${props.item.id}/`}>Find out More</a></button></span>
+  
   let itemShow = props => {
 
     if(props.selectedID === props.item.id) {
@@ -28,6 +30,7 @@ const ItemDisplay = props => {
                       {select}
                       {remove}
                       {update}
+                      {more}
                     </div>
                   </div>
       return itemDiv;

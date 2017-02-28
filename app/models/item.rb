@@ -4,6 +4,8 @@ class Item < ApplicationRecord
 
   has_many :reviews
 
+  serialize :borrower
+
   validates :name, presence: true
   validates :body, presence: true
   validates :zip_code, presence: true
@@ -12,7 +14,7 @@ class Item < ApplicationRecord
   validates :size, presence: true
 
   def self.available
-    where(borrower_id: nil)
+    where(available: true)
   end
 
   def address
