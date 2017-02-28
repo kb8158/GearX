@@ -2,7 +2,7 @@ class Api::V1::ItemsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:create, :update, :selected, :destroy]
 
   def index
-    @items = Item.all
+    @items = Item.available
     @user = current_user
     render json: {items: @items, user: @user}
   end
@@ -11,6 +11,7 @@ class Api::V1::ItemsController < ApplicationController
     @item = Item.find(params[:item_id])
     @user = current_user
     @item.borrower_id << @user.id
+    @item.available = false
     @item.save
     SelectedMailer.selected(@item, @user).deliver_now
   end
