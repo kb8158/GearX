@@ -1,8 +1,8 @@
 class SelectedMailer < ApplicationMailer
-  def selected(item)
-    @lender = item.lender
+  def selected(item, user)
     @item = item
+    @user = user
     @url = "gear-x.herokuapp.com/items/#{@item.id}"
-    mail(to: @lender.email, subject: 'Product selected')
+    mail(to: @item.lender.email, subject: 'Product selected')
   end
 end

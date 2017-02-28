@@ -10,9 +10,9 @@ class Api::V1::ItemsController < ApplicationController
   def selected
     @item = Item.find(params[:item_id])
     @user = current_user
-    binding.pry
-    @item.borrower_id << @user
+    @item.borrower_id << @user.id
     @item.save
+    SelectedMailer.selected(@item, @user).deliver_now
   end
 
   def edit
