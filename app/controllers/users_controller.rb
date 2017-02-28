@@ -6,10 +6,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = Item.where(borrower_id: @user.id)
+    @items = Item.all
     @review = Review.new
     @reviews = Review.where(user_id: @user.id)
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
   def edit
