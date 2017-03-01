@@ -17,22 +17,18 @@
 
 
 <% if @item.lender == current_user %>
-  <p id="links_color"><%= link_to "Update Item Information", edit_item_path %></p>
-<% end %>
-
-<% if @item.lender == current_user%>
   <div class="links">
+    <p id="links_color"><%= link_to "Update Item Information", edit_item_path %></p>
     <p><%= link_to "Delete Item", @item, method: :delete %></p>
   </div>
 <% end %>
 
-<div class="links">
-  <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
-</div>
-
-<div class="links">
-  <%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
-</div>
+<% if @item.lender != current_user %>
+  <div class="links">
+    <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
+    <%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
+  </div>
+<% end %>
 
 <div class="links">
   <p><%= link_to "Back To Items", items_path %></p>

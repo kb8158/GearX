@@ -63,6 +63,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def available
+    @item = Item.find(params[:id])
+    if @item.available == false
+      @item.available = true
+      @item.save
+    else
+      @item.available = true
+      @item.save
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id])
     if @item.lender == current_user
