@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :items
   post "/items/:id/selected", to: 'items#selected'
+  post "/items/:id/available", to: 'items#available'
 
   resources :things
   post "/things/:id/chosen", to: "things#chosen"

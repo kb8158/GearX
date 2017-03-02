@@ -1,5 +1,14 @@
-
 #app img{
+  max-width: 300px;
+  max-height: 300px;
+  margin: auto;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+  text-align: center;
+}
+
+#check img{
   max-width: 300px;
   max-height: 300px;
   margin: auto;
