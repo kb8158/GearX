@@ -62,10 +62,8 @@ class ItemUnavailable extends Component {
     let items = '';
     if (this.state.items) {
         items = this.state.items.map((item) => {
-        let className='col-lg-4';
-        if (item == this.state.items[this.state.items.length - 1]) {
-          className += ' end';
-        }
+        let className='col-lg-4 pic';
+
         let selected;
           if (item.id === this.state.selectedItemID) {
             selected = true;
@@ -83,7 +81,7 @@ class ItemUnavailable extends Component {
           return (
             <div key={item.id} className={className}>
                 <a href="javascript:;" onClick={onItemClick}>
-                  <h3 className="text-center">{item.name}</h3>
+                  <h3>{item.name}</h3>
                   <img src={item.image}/></a>
                   <div className='item-content'>
                   < UnavailableDisplay

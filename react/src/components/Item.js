@@ -108,7 +108,7 @@ class Item extends Component {
           return (
             <div key={item.id} className={className}>
                 <a href="javascript:;" onClick={onItemClick}>
-                  <h3 className="text-center">{item.name}</h3>
+                  <h3>{item.name}</h3>
                   <img src={item.image}/></a>
                   <div className='item-content'>
                   < ItemDisplay
@@ -121,7 +121,7 @@ class Item extends Component {
                 </div>
             </div>
           );
-        }  
+        }
       });
     }
 
