@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ItemDisplay from "./ItemDisplay";
+import UnavailableDisplay from "./UnavailableDisplay";
 
-class Item extends Component {
+class ItemUnavailable extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,6 @@ class Item extends Component {
     };
     this.handleItemClick = this.handleItemClick.bind(this)
     this.fetching = this.fetching.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleItemDelete = this.handleItemDelete.bind(this)
   }
 
@@ -21,24 +20,6 @@ class Item extends Component {
       selectedID = null
     }
     this.setState({selectedItemID: selectedID})
-  }
-
-  handleSubmit(itemID){
-    let data = {
-      borrower_id: this.state.currentUser,
-      item_id: itemID
-    }
-    let json = JSON.stringify(data);
-    fetch(`/api/v1/items/${itemID}/selected`, {
-      credentials: "include",
-      method: "post",
-      headers: { 'Content-Type': 'application/json' },
-      body: json
-    })
-
-    .then(response=>{
-      this.fetching();
-    })
   }
 
   handleItemDelete(itemID){
@@ -80,8 +61,7 @@ class Item extends Component {
   render() {
     let items = '';
     if (this.state.items) {
-      items = this.state.items.filter((item)=>{return item.name.toLowerCase().search(this.props.query.toLowerCase()) > -1; });
-      items = items.map((item) => {
+        items = this.state.items.map((item) => {
         let className='col-lg-4';
         if (item == this.state.items[this.state.items.length - 1]) {
           className += ' end';
@@ -95,33 +75,27 @@ class Item extends Component {
           this.handleItemClick(item.id);
         }
 
-        let onSubmit = (event) =>{
-          event.preventDefault();
-          this.handleSubmit(item.id)
-        }
-
         let onDelete = (event) => {
           event.preventDefault();
           this.handleItemDelete(item.id)
         }
-        if (item.available === true) {
+        if (item.available === false) {
           return (
             <div key={item.id} className={className}>
                 <a href="javascript:;" onClick={onItemClick}>
                   <h3 className="text-center">{item.name}</h3>
                   <img src={item.image}/></a>
                   <div className='item-content'>
-                  < ItemDisplay
+                  < UnavailableDisplay
                     selectedID = {this.state.selectedItemID}
                     item = {item}
-                    onSubmit = {onSubmit}
                     onDelete = {onDelete}
                     currentUser = {this.state.currentUser}
                     />
                 </div>
             </div>
           );
-        }  
+        }
       });
     }
 
@@ -133,4 +107,4 @@ class Item extends Component {
   }
 }
 
-export default Item;
+export default ItemUnavailable;
