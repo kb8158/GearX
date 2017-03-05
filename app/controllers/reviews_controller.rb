@@ -11,7 +11,6 @@ class ReviewsController < ApplicationController
     @review.item = @item
     @review.user = current_user
     @review.save
-    redirect_to user_path(@item.borrower)
   end
 
   def edit

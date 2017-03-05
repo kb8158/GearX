@@ -15,7 +15,7 @@ class Api::V1::ItemsController < ApplicationController
     @item.save
     SelectedMailer.selected(@item, @user).deliver_now
     flash[:notice] =  "Item selected successfully!"
-    if User.find(@item.borrower_id.last) == @user
+    if User.where(@item.borrower_id.last) == @user
       @item.borrower_id.pop
       flash[:notice] =  "Item De-selected successfully"
       redirect_to items_path
