@@ -15,49 +15,49 @@
   </div>
 </div>
 
-<h1 class="text-center"><a href="#myModal" data-toggle="modal">Add a Review</a></h1>
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h1 class="modal-title text-center">Add a Review</h1>
-          </div>
-          <div class="modal-body">
-            <%= form_for [@item, @review] do |f| %>
-          <div class="row">
-            <div class="col-lg-12 ">
-              <div class="field">
-                <%= f.label :body, "Description" %><br>
-                <%= f.text_field :body %>
+<% if @item.borrower_id.include?(current_user.id) %>
+  <h1 class="text-center"><a href="#myModal" data-toggle="modal">Add a Review</a></h1>
+  <div id="myModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h1 class="modal-title text-center">Add a Review</h1>
+            </div>
+            <div class="modal-body">
+              <%= form_for [@item, @review] do |f| %>
+            <div class="row">
+              <div class="col-lg-12 ">
+                <div class="field">
+                  <%= f.label :body, "Description" %><br>
+                  <%= f.text_field :body %>
+                </div>
+              </div>
+            </div>
+            <div class= "row">
+              <div class="col-lg-12 ">
+                 <div class="actions">
+                   <br>
+                    <%= f.submit "Add review"%>
+                 </div>
+                <% end %>
               </div>
             </div>
           </div>
-          <div class= "row">
-            <div class="col-lg-12 ">
-               <div class="actions">
-                 <br>
-                  <%= f.submit "Add review"%>
-               </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
-</div>
-
+<% end %>
 
   <div class="col-lg-12 ">
     <% @reviews.each do |review| %>
       <div class="col-lg-6">
           <h4>Review: <%= review.body %></h4>
         <div class="col-lg-3">
-          <% if review.user == item.borrower %>
-            <button><%= link_to "Update Review", "/items/#{item.id}/reviews/#{review.id}/edit", params:{review: review.id}%></button><br>
-          <% end %>
-          <% if review.user == item.borrower %>
-            <button><%= link_to "Delete", "/items/#{item.id}/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %></button>
+          <% if review.user == current_user %>
+            <button><%= link_to "Update Review", "/items/@item/reviews/#{review.id}/edit", params:{review: review.id}%></button><br>
+
+            <button><%= link_to "Delete", "/items/@item/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %></button>
           <% end %>
         </div>
     <% end %>
@@ -75,9 +75,12 @@
   </div>
 <% end %>
 
-<% if @item.lender != current_user %>
+<div class="link">
+  <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
+</di>
+
+<% if @item.borrower_id.last == current_user %>
   <div class="links">
-    <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
     <%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>
