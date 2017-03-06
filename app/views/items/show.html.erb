@@ -11,6 +11,17 @@
       <p> Description: <%= @item.body %> </p>
       <p> Location: <%= @item.zip_code %></p>
       <p> Size: <%= @item.size %></p>
+      <% if @item.lender != current_user %>
+        <div class="link">
+          <button><%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %></button>
+        </div>
+      <% end %>
+
+      <% if @item.borrower_id.last == current_user %>
+        <div class="links">
+          <button><%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %></button>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -20,51 +31,56 @@
   <div id="myModal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h1 class="modal-title text-center">Add a Review</h1>
-            </div>
-            <div class="modal-body">
-              <%= form_for [@item, @review] do |f| %>
-            <div class="row">
-              <div class="col-lg-12 ">
-                <div class="field">
-                  <%= f.label :body, "Description" %><br>
-                  <%= f.text_field :body %>
-                </div>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h1 class="modal-title text-center">Add a Review</h1>
+          </div>
+          <div class="modal-body">
+            <%= form_for [@item, @review] do |f| %>
+          <div class="row">
+            <div class="col-lg-6 ">
+              <div class="field">
+                <%= f.label :body, "Description" %><br>
+                <%= f.text_field :body %>
               </div>
             </div>
-            <div class= "row">
-              <div class="col-lg-12 ">
-                 <div class="actions">
-                   <br>
-                    <%= f.submit "Add review"%>
-                 </div>
-                <% end %>
+
+            <div class="col-lg-6 ">
+               <div class="actions">
+                 <br>
+                 <%= f.submit "Add review"%>
+              <% end %>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
 <% end %>
 
-  <div class="col-lg-12 ">
-    <% @reviews.each do |review| %>
-      <div class="col-lg-6">
-          <h4>Review: <%= review.body %></h4>
-        <div class="col-lg-3">
-          <% if review.user == current_user %>
-            <button><%= link_to "Update Review", "/items/@item/reviews/#{review.id}/edit", params:{review: review.id}%></button><br>
+<div class="links">
+  <h1> Reviews: </h1>
+<div class="col-lg-12">
+  <% @reviews.each do |review| %>
+  <div class="col-lg-12 review">
+    <div class="col-lg-2">
+      <h4>Reviewer: <%= review.user.first_name %></h4>
+      </div>
+      <div class="col-lg-8">
+        <h4><%= review.body %></h4>
+      </div>
+      <div class="col-lg-2">
+        <% if review.user == current_user %>
+            <button><%= link_to "Update Review", "/items/#{@item.id}/reviews/#{review.id}/edit", params:{review: review.id}%></button>
 
-            <button><%= link_to "Delete", "/items/@item/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %></button>
+            <button><%= link_to "Delete", "/items/#{@item.id}/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %></button>
           <% end %>
         </div>
+      </div>
     <% end %>
   </div>
 </div>
-
-
 
 
 
@@ -75,15 +91,7 @@
   </div>
 <% end %>
 
-<div class="link">
-  <%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
-</di>
 
-<% if @item.borrower_id.last == current_user %>
-  <div class="links">
-    <%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %>
-  </div>
-<% end %>
 
 <div class="links">
   <p><%= link_to "Back To Items", items_path %></p>

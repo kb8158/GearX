@@ -14,7 +14,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-
     @item = Item.find(params[:item_id])
     @review = Review.find(params[:id])
   end
@@ -22,13 +21,15 @@ class ReviewsController < ApplicationController
   def update
     @item = Item.find(params[:item_id])
     @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to item_path(@item)
   end
 
   def destroy
     @item = Item.find(params[:item_id])
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to user_path(@item.borrower)
+    redirect_to item_path(@item)
   end
 
   private
