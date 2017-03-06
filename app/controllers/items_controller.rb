@@ -7,7 +7,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @new_item = Item.new
+    @review = Review.new
+    @reviews = Review.where(item_id: @item.id)
   end
 
   def new
