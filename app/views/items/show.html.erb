@@ -73,7 +73,6 @@
       <div class="col-lg-2">
         <% if review.user == current_user %>
             <button><%= link_to "Update Review", "/items/#{@item.id}/reviews/#{review.id}/edit", params:{review: review.id}%></button>
-
             <button><%= link_to "Delete", "/items/#{@item.id}/reviews/#{review.id}", method: :delete, params:{review: review.id}, data: {confirm: "Are you sure?"} %></button>
           <% end %>
         </div>

@@ -52,12 +52,14 @@ class ItemsController < ApplicationController
     @user = current_user
     if @item.borrower_id.last != @user.id
       @item.borrower_id << @user.id
+      @item.available = false
       @item.save
       SelectedMailer.selected(@item, @user).deliver_now
       flash[:notice] =  "Item selected successfully!"
-      redirect_to user_path(current_user)
+      redirect_to items_path
     else
       @item.borrower_id.pop
+      @item.available = true
       @item.save
       flash[:notice] =  "Item De-selected successfully"
       redirect_to items_path

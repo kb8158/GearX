@@ -18,6 +18,7 @@ class Api::V1::ItemsController < ApplicationController
     if User.where(@item.borrower_id.last) == @user
       @item.borrower_id.pop
       flash[:notice] =  "Item De-selected successfully"
+      @item.available = true
       redirect_to items_path
     end
   end
