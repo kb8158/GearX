@@ -116,3 +116,10 @@ h1 {
   margin: 5px;
   padding: 5px;
 }
+
+.info{
+  background: rgba(225, 225, 225, .8);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px
+}

@@ -7,20 +7,16 @@
         <%= image_tag(@item.image) %>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 info">
       <p> Description: <%= @item.body %> </p>
       <p> Location: <%= @item.zip_code %></p>
       <p> Size: <%= @item.size %></p>
-      <% if @item.lender != current_user %>
-        <div class="link">
-          <button><%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %></button>
-        </div>
+      <% if @item.lender != current_user && @item.available == true %>
+        <button><%= link_to "Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %></button>
       <% end %>
 
       <% if @item.borrower_id.last == current_user.id %>
-        <div class="links">
-          <button><%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %></button>
-        </div>
+        <button><%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %></button>
       <% end %>
     </div>
   </div>
