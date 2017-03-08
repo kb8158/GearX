@@ -17,7 +17,7 @@
         </div>
       <% end %>
 
-      <% if @item.borrower_id.last == current_user %>
+      <% if @item.borrower_id.last == current_user.id %>
         <div class="links">
           <button><%= link_to "De-Select This Item", "/items/#{@item.id}/selected", method: :post, data: { confirm: "Are you sure?" } %></button>
         </div>
