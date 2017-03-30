@@ -16,6 +16,7 @@ GearX provides a platform to match borrowers and lenders or outdoor equipment. U
 * Creating and signing into a user account
 * Adding gear and gear searched for
 * Linking up borrowers and lenders
+* All gear in the inventory is listed but if an item is not available it is listed under the checked out section
 * Owners of items can mark it as available or not, all borrowers are stored for the history of the item
 * Adding reviews for a borrowed item
 * Emailing a user once their post has been selected
