@@ -6,7 +6,7 @@
 
 Heroku Link: https://gear-x.herokuapp.com/
 
-GearX provides a platform to match borrowers and lenders or outdoor equipment. Users can post items they are willing to lend or are searching for. And other users can then select these and the two will be matched up to set up a transaction. Each user can also create a profile about their trips and opinions on gear that they have borrowed.
+GearX provides a platform to match borrowers and lenders of outdoor equipment. Users can post items they are willing to lend or are searching for. And other users can then select these and the two will be matched up to set up a transaction. Each user can also create a profile about their trips and opinions on gear that they have borrowed.
 
 ## Authors
 * Kate Brown (https://github.com/kb8158)
