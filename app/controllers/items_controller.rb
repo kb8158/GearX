@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.lender == current_user
+    if @item.lender == current_user && @item.update(item_params)
       flash[:notice] =  "Item updated successfully"
       redirect_to item_path(@item)
     else
@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
       @item.available = true
       @item.save
     else
-      @item.available = true
+      @item.available = false
       @item.save
     end
   end
